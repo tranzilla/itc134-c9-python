@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="robots" content="noindex,nofollow" /> 
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+		<title>Python</title>
+	</head>
+	<body>
+		{% extends "template.html" %}
+    	{% block content %}
+		<h2>Deployable Application with Python</h2>
+		<p>This website was written in Python and deployed on the cloud</p>
+		<p>Applications such as games can be easily deployed. The code below is for the classic game Hangman</p>
+		<pre><code>
+			import time
+
+			name = input("What is your name? ")
+
+			print ("Hello, " + name, +"! " "Time to play hangman!")
+
+			time.sleep(1)
+
+			print ("Start Guessing...")
+			
+			time.sleep(0.5)
+			
+			word = "python is the best"
+			
+			guesses = ''
+			
+			turns = 10
+
+			while turns > 0:         
+
+				failed = 0               
+				for char in word:      
+					if char in guesses:    
+						print (char,)    
+					else:
+						print ("_"),   
+						failed += 1    
+
+				if failed == 0:        
+					print ("You won!")  
+					break              
+
+				guess = input("Guess a Character:") 
+
+				guesses += guess                    
+
+				if guess not in word:  
+					turns -= 1        
+					print ("Wrong")    
+					print ("You have", + turns, 'more guesses') 
+
+					if turns == 0:           
+						print ("You Loose")  
+		</code></pre>
+	<footer>
+		<small>
+			&copy; 2018, Tran Duong &amp; Chris Moore All Rights Reserved <br /> 
+			<a href="http://validator.w3.org/check?uri=referer" target="_blank">Valid HTML</a> | 
+			<a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">Valid CSS</a>
+		</small>
+	</footer>	
+    {% endblock %}
+	</body>	
+</html>
